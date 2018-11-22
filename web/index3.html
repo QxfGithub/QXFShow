@@ -1,0 +1,165 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Hello my friend , welcome to my site ~</title>
+<!--可无视-->
+<link rel="stylesheet" type="text/css" href="css/base.css" media="screen">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="css/button.css" media="screen">
+<script language="Javascript" type="text/javascript"> 
+/* æ°å­æ¶é´ */
+	setInterval("timer.innerHTML=new Date().toLocaleString()"); 
+	window.onload = function (){
+	setInterval("timer.innerHTML=new Date().toLocaleString()",1000); 
+	};
+	
+/* å¾å½¢æ¶é´ */
+function displayTime(){
+    //è·åå½åæ¶é´
+var now=new Date();
+//è·åæ¶åç§
+var h=now.getHours();
+var m=now.getMinutes();
+var s=now.getSeconds();
+var c=document.getElementById("colock");
+var cxt=c.getContext("2d");
+cxt.clearRect(0,0,200,200);
+//ç»è¡¨ç
+cxt.beginPath();
+cxt.arc(100,100,95,0,2*Math.PI);
+cxt.lineWidth="10";
+cxt.fillStyle="#e4e6e5";
+cxt.fill();
+cxt.strokeStyle="#48bd4d";
+cxt.stroke();
+cxt.closePath();
+//ç»è¡¨å¿
+cxt.beginPath();
+cxt.arc(100,100,3,0,2*Math.PI);
+cxt.fillStyle="red";
+cxt.fill();
+cxt.closePath();
+//æ¶å»åº¦
+for(var i=0;i<12;i++){
+    cxt.save();
+    cxt.translate(100,100);
+    cxt.rotate(30*i*Math.PI/180);  
+    cxt.save();
+    cxt.lineWidth="3";
+    cxt.strokeStyle="black";
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.moveTo(0,-90);
+    cxt.lineTo(0,-80);
+    cxt.closePath();         
+    cxt.restore();
+    cxt.translate(0,-75);  
+    cxt.rotate(-30*i*Math.PI/180);
+    //è®¾ç½®å­ä½æ ·å¼
+    cxt.font = "15px Courier ";
+    //è®¾ç½®å­ä½å¡«åé¢è²
+    cxt.fillStyle ="black";    
+    //ä»åæ ç¹(50,50)å¼å§ç»å¶æå­
+    if(i==0)
+    {
+          cxt.fillText(12, -6, 4);
+    }
+    else{
+          cxt.fillText(i, -6, 4);                      
+    }
+
+    cxt.restore();
+}
+//ç»åå»åº¦
+for(var j=0;j<60;j++){
+    cxt.save();
+    cxt.translate(100,100);
+    cxt.rotate(6*j*Math.PI/180);
+    cxt.lineWidth="1";
+    cxt.beginPath();
+    cxt.strokeStyle="black";
+    cxt.moveTo(0,-90);
+    cxt.lineTo(0,-85);
+    cxt.closePath();
+    cxt.stroke();
+    cxt.restore();
+}
+//æéï¼ç§éæé¿æç»ï¼æ¶éæç­æç²ï¼
+//åæ ¹æ®å½åçæ¶é´ç¡®å®ç§éçä½ç½®
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(6*s*Math.PI/180);
+cxt.lineWidth="1";
+cxt.beginPath();
+cxt.moveTo(0,-80);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="red";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+//ç¡®å®åéçä½ç½®ï¼åéä¸ç§éèµ°0.1Â°
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(6*m*Math.PI/180);
+cxt.rotate(0.1*s*Math.PI/180);
+cxt.lineWidth="2";
+cxt.beginPath();
+cxt.moveTo(0,-65);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="black";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+//ç¡®å®æ¶éçä½ç½®ï¼æ¶éä¸åéèµ°0.5Â°ï¼æ¶éä¸ç§èµ°1/120Â°
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(30*h*Math.PI/180);
+cxt.rotate(0.5*m*Math.PI/180);
+cxt.rotate((1/120)*m*Math.PI/180);
+cxt.lineWidth="4";
+cxt.beginPath();
+cxt.moveTo(0,-45);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="black";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+setTimeout(displayTime,1000) /*æ¯è¿ä¸ç§æ§è¡ä¸æ¬¡displayTime*/
+}
+window.onload = displayTime;
+
+
+</script>
+</head>
+<body>
+	<canvas id="colock" width="200" height="200" ></canvas>             
+	<p>
+	<p>
+	<div id="timer"></div>
+	<p>
+<p>
+
+<div class="button gray"><div class="shine"></div>welcome to play game..</div><br>
+<div class="button gray"><div class="shine"></div><a href='2048.html'>  2048</a></div>
+<div class="button blue"><div class="shine"></div><a href='WuZiQI.html'>WuZiQI</a></div>
+<div class="button green"><div class="shine"></div><a href='MiGong.html'>MiGong</a></div><br/>
+<div class="button red"><div class="shine"></div><a href='MoFang.html'>MoFang</a></div>
+<div class="button purple"><div class="shine"></div><a href='Pacman.html'>Pacman</a></div>
+<div class="button orange"><div class="shine"></div><a href='Planetgame.html'>Planetgame</a></div><br>
+
+<div class="button gray"><div class="shine"></div>welcome to play action..</div><br>
+
+<div class="button gray"><div class="shine"></div><a href='LiuSend.html'>LiuSend</a></div>
+<div class="button blue"><div class="shine"></div><a href='MusicPlayer.html'>Music</a></div>
+<div class="button green"><div class="shine"></div><a href='Start.html'>Start</a></div><br/>
+<div class="button red"><div class="shine"></div><a href='Tree.html'>Tree</a></div>
+<div class="button purple"><div class="shine"></div><a href='YanHua.html'>YanHua</a></div>
+<div class="button orange"><div class="shine"></div><a href='ZimuGobal.html'>ZimuGobal</a></div><br>
+<p>
+<div class="button gray"><div class="shine"></div><a href='index2.html'>exchage other style?</a></div>
+<div class="button gray"><div class="shine"></div><a href='Menu.html'>exchage to menu style</a></div>
+</body>
+</html>

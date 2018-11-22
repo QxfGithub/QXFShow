@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>css3最新鼠标划过样式</title>
+<link rel="stylesheet" href="css/ActionButton.css" />
+</head>
+<body>
+<script language="Javascript" type="text/javascript"> 
+/* æ°å­æ¶é´ */
+	setInterval("timer.innerHTML=new Date().toLocaleString()"); 
+	window.onload = function (){
+	setInterval("timer.innerHTML=new Date().toLocaleString()",1000); 
+	};
+	
+/* å¾å½¢æ¶é´ */
+function displayTime(){
+    //è·åå½åæ¶é´
+var now=new Date();
+//è·åæ¶åç§
+var h=now.getHours();
+var m=now.getMinutes();
+var s=now.getSeconds();
+var c=document.getElementById("colock");
+var cxt=c.getContext("2d");
+cxt.clearRect(0,0,200,200);
+//ç»è¡¨ç
+cxt.beginPath();
+cxt.arc(100,100,95,0,2*Math.PI);
+cxt.lineWidth="10";
+cxt.fillStyle="#e4e6e5";
+cxt.fill();
+cxt.strokeStyle="#48bd4d";
+cxt.stroke();
+cxt.closePath();
+//ç»è¡¨å¿
+cxt.beginPath();
+cxt.arc(100,100,3,0,2*Math.PI);
+cxt.fillStyle="red";
+cxt.fill();
+cxt.closePath();
+//æ¶å»åº¦
+for(var i=0;i<12;i++){
+    cxt.save();
+    cxt.translate(100,100);
+    cxt.rotate(30*i*Math.PI/180);  
+    cxt.save();
+    cxt.lineWidth="3";
+    cxt.strokeStyle="black";
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.moveTo(0,-90);
+    cxt.lineTo(0,-80);
+    cxt.closePath();         
+    cxt.restore();
+    cxt.translate(0,-75);  
+    cxt.rotate(-30*i*Math.PI/180);
+    //è®¾ç½®å­ä½æ ·å¼
+    cxt.font = "15px Courier ";
+    //è®¾ç½®å­ä½å¡«åé¢è²
+    cxt.fillStyle ="black";    
+    //ä»åæ ç¹(50,50)å¼å§ç»å¶æå­
+    if(i==0)
+    {
+          cxt.fillText(12, -6, 4);
+    }
+    else{
+          cxt.fillText(i, -6, 4);                      
+    }
+
+    cxt.restore();
+}
+//ç»åå»åº¦
+for(var j=0;j<60;j++){
+    cxt.save();
+    cxt.translate(100,100);
+    cxt.rotate(6*j*Math.PI/180);
+    cxt.lineWidth="1";
+    cxt.beginPath();
+    cxt.strokeStyle="black";
+    cxt.moveTo(0,-90);
+    cxt.lineTo(0,-85);
+    cxt.closePath();
+    cxt.stroke();
+    cxt.restore();
+}
+//æéï¼ç§éæé¿æç»ï¼æ¶éæç­æç²ï¼
+//åæ ¹æ®å½åçæ¶é´ç¡®å®ç§éçä½ç½®
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(6*s*Math.PI/180);
+cxt.lineWidth="1";
+cxt.beginPath();
+cxt.moveTo(0,-80);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="red";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+//ç¡®å®åéçä½ç½®ï¼åéä¸ç§éèµ°0.1Â°
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(6*m*Math.PI/180);
+cxt.rotate(0.1*s*Math.PI/180);
+cxt.lineWidth="2";
+cxt.beginPath();
+cxt.moveTo(0,-65);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="black";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+//ç¡®å®æ¶éçä½ç½®ï¼æ¶éä¸åéèµ°0.5Â°ï¼æ¶éä¸ç§èµ°1/120Â°
+cxt.save();
+cxt.translate(100,100);
+cxt.rotate(30*h*Math.PI/180);
+cxt.rotate(0.5*m*Math.PI/180);
+cxt.rotate((1/120)*m*Math.PI/180);
+cxt.lineWidth="4";
+cxt.beginPath();
+cxt.moveTo(0,-45);
+cxt.lineTo(0,-3);
+cxt.strokeStyle="black";
+cxt.closePath();
+cxt.stroke();
+cxt.restore();
+setTimeout(displayTime,1000) /*æ¯è¿ä¸ç§æ§è¡ä¸æ¬¡displayTime*/
+}
+window.onload = displayTime;
+
+
+</script>
+</head>
+<body>
+<div id="workarea">
+
+	<canvas id="colock" width="200" height="200" ></canvas>             
+	<p>
+	<p>
+	<div class="position">
+	
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="MoFang.html"><span class="spot"></span>MoFang</a>
+				</div>
+			</svg>
+		</div>
+		
+		<!--start button, nothing above this is necessary -->
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="Planetgame.html"><span class="spot"></span>Planetgame</a>
+				</div>
+			</svg>
+		</div>
+	
+		<!--Next button -->
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="WuZiQI.html"><span class="spot"></span>WuZiQI</a>
+				</div>
+			</svg>
+		</div><br><br>
+		
+		
+		<!--start button, nothing above this is necessary -->
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="MiGong.html"><span class="spot"></span>MiGong</a>
+				</div>
+			</svg>
+		</div>
+		
+		
+	
+		<!--Next button -->
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="2048.html"><span class="spot"></span>2048</a>
+					
+				</div>
+			</svg>
+		</div>
+		<!--End button -->
+		
+		<!--start button, nothing above this is necessary -->
+		
+		
+		<!--start button, nothing above this is necessary -->
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="Pacman.html"><span class="spot"></span>Pacman</a>
+				</div>
+			</svg>
+		</div><br><br>
+	
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="ZimuGobal.html"><span class="spot"></span>ZimuGobal</a>
+				</div>
+			</svg>
+		</div>
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="YanHua.html"><span class="spot"></span>YanHua</a>
+				</div>
+			</svg>
+		</div>
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="Tree.html"><span class="spot"></span>Tree</a>
+				</div>
+			</svg>
+		</div><br><br>
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="Start.html"><span class="spot"></span>Start</a>
+				</div>
+			</svg>
+		</div>
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="MusicPlayer.html"><span class="spot"></span>MusicPlayer</a>
+				</div>
+			</svg>
+		</div>
+		
+		<div class="svg-wrapper">
+			<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+				<rect id="shape" height="40" width="150" />
+				<div id="text">
+					<a href="LiuSend.html"><span class="spot"></span>LiuSend</a>
+				</div>
+			</svg>
+		</div>
+		
+		
+		
+	</div>
+</div>
+
+
+</body>
+</html>

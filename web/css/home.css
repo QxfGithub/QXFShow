@@ -1,0 +1,30 @@
+#mainDiv {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	height: 100%;
+	text-align: center;
+}
+
+h1{
+	color:red;
+}
+
+h2{
+	color:blue;
+}
+
+h3{
+	color:green;
+}
+
+.c1{
+	font-family: 微软雅黑;
+}
+
+body {
+    font-family: 'microsoft yahei', Arial, sans-serif;
+    background-color: #09192A;
+    overflow: hidden;
+}
